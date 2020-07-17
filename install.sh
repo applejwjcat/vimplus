@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Fri Jul 17 2020 23:29:22 PM CST
+# Last Modified Date: Fri Jul 17 2020 23:55:19 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -324,7 +324,7 @@ function install_prepare_software_on_fedora()
 # 安装archlinux必备软件
 function install_prepare_software_on_archlinux()
 {
-    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig node npm clangd clang-format go
+    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig npm clang go
     sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 }
 
