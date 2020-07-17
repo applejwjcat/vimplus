@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Fri Jul 17 2020 21:40:28 PM CST
+# Last Modified Date: Fri Jul 17 2020 22:24:53 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -378,9 +378,11 @@ function copy_files()
     
     zsh_is_exist = $(is_exist_file ~/.zshrc)
     if [ $zsh_is_exist == 1 ]; then
-        echo "export MYVIM=~/.config/.vim" >> ~/.zshrc && source ~/.zshrc
+        echo "export MYVIM=~/.config/.vim" >> ~/.zshrc 
+        source ~/.zshrc
     fi
-    echo "export MYVIM=~/.config/.vim" >> ~/.bashrc && source ~/.bashrc
+    echo "export MYVIM=~/.config/.vim" >> ~/.bashrc 
+    source ~/.bashrc
 
     cp ${PWD}/.vimrc.custom.plugins ~/.config/.vim/
     cp ${PWD}/.vimrc.custom.config ~/.config/.vim/
@@ -403,8 +405,8 @@ function copy_plugins_files()
     read -p "Do you want to make your own plugin files [y/N] " answer
     if [[ $answer == "y" ]];then
         echo "Copy plugins files:"
-        cp $(PWD)/plugin_modify/snippet* ~/.config/.vim/plugged/prepare-code/snippet/
-        cp $(PWD)/plugin_modify/header.vim ~/.config/.vim/plugged/vim-header/autoload
+        cp ${PWD}/plugin_modify/snippet* ~/.config/.vim/plugged/prepare-code/snippet/
+        cp ${PWD}/plugin_modify/header.vim ~/.config/.vim/plugged/vim-header/autoload
     else
         echo "Defaults is the best!"
     fi
