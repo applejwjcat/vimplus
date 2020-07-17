@@ -1,7 +1,7 @@
 " File              : .vimrc.custom.plugins
 " Author            : Tristan <15997232823@163.com>
 " Date              : Sun Apr 19 2020 01:28:08 AM CST
-" Last Modified Date: Thu Jul 16 2020 19:32:00 PM CST
+" Last Modified Date: 17.07.2020
 " Last Modified By  : Tristan <15997232823@163.com>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -15,14 +15,14 @@
 " 3.执行,,i进行插件安装
  "Plug 'iamcco/mathjax-support-for-mkdp'
  "Plug 'iamcco/markdown-preview.vim'
- Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
- Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
+" Plug 'junegunn/fzf.vim'
  Plug 'vim-utils/vim-man'
  Plug 'alpertuna/vim-header'
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
  Plug 'Chiel92/vim-autoformat'
- Plug 'mbbill/undotree'
+" Plug 'mbbill/undotree'
 " Plug 'Yggdroot/indentLine'
 " Plug 'gorodinskiy/vim-coloresque'
 " Plug 'vim-scripts/DoxygenToolkit.vim'

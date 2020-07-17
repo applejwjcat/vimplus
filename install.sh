@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Fri Jul 17 2020 17:14:24 PM CST
+# Last Modified Date: Fri Jul 17 2020 20:48:49 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -507,7 +507,7 @@ function install_vimplus_on_mac()
     install_prepare_software_on_mac
     copy_files
     install_fonts_on_mac
-    install_fzf
+#    install_fzf
     install_vim_plugin
     copy_plugins_files
     print_logo
@@ -520,7 +520,7 @@ function install_vimplus_on_android()
     install_prepare_software_on_android
     copy_files
     install_fonts_on_android
-    install_fzf
+#    install_fzf
     install_vim_plugin
     copy_plugins_files
     print_logo
@@ -531,7 +531,7 @@ function begin_install_vimplus()
 {
     copy_files
     install_fonts_on_linux
-    install_fzf
+#    install_fzf
     install_vim_plugin
     copy_plugins_files
     print_logo
