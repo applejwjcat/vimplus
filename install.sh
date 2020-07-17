@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Fri Jul 17 2020 20:48:49 PM CST
+# Last Modified Date: Fri Jul 17 2020 20:58:22 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -474,7 +474,7 @@ function install_vim_plugin()
 #}
 
 ## 安装fzf
-function install fzf()
+function install_fzf()
 {
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
