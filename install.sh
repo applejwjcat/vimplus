@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Fri Jul 17 2020 15:51:07 PM CST
+# Last Modified Date: Fri Jul 17 2020 17:14:24 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -277,7 +277,7 @@ function install_prepare_software_on_ubuntu()
         sudo apt-get install -y cmake
     fi
 
-    sudo apt-get install -y exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git node npm
+    sudo apt-get install -y exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git nodejs npm
 
     if [ $version -ge 18 ];then
         sudo apt-get install -y vim
@@ -290,7 +290,7 @@ function install_prepare_software_on_ubuntu()
 function install_prepare_software_on_ubuntu_like()
 {
     sudo apt-get update
-    sudo apt-get install -y cmake exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git node npm
+    sudo apt-get install -y cmake exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git nodejs npm
     compile_vim_on_ubuntu
 }
 
@@ -298,7 +298,7 @@ function install_prepare_software_on_ubuntu_like()
 function install_prepare_software_on_debian()
 {
     sudo apt-get update
-    sudo apt-get install -y cmake exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack git node npm
+    sudo apt-get install -y cmake exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack git nodejs npm
     compile_vim_on_debian
 }
 
@@ -362,7 +362,7 @@ function install_prepare_software_on_opensuse()
     sudo zypper install -y vim ctags gcc gcc-c++ cmake python-devel python3-devel ack fontconfig git ncurses5-devel node npm
 }
 
-# 拷贝文件
+# 拷贝文件和设置变量
 function copy_files()
 {
     rm -rf ~/.config/.vim/.vimrc
@@ -375,6 +375,12 @@ function copy_files()
 
     rm -rf ~/.config/.vim
     mkdir -p ~/.config/.vim
+    
+    zsh_is_exist = $(is_exist_file ~/.zshrc)
+    if [ $zsh_is_exist == 1 ]; then
+        echo "export MYVIM=~/.config/.vim" >> ~/.zshrc
+    fi
+    echo "export MYVIM=~/.config/.vim" >> ~/.bashrc
 
     cp ${PWD}/.vimrc.custom.plugins ~/.config/.vim/
     cp ${PWD}/.vimrc.custom.config ~/.config/.vim/
@@ -389,6 +395,13 @@ function copy_files()
 
     rm -rf ~/.config/.vim/autoload
     cp -r ${PWD}/autoload ~/.config/.vim
+}
+
+#自己设置的一些文件
+function copy_plugins_files()
+{
+    cp $(PWD)/plugin_modify/snippet* ~/.config/.vim/plugged/prepare-code/snippet/
+    cp $(PWD)/plugin_modify/header.vim ~/.config/.vim/plugged/vim-header/autoload
 }
 
 # 安装mac平台字体
@@ -460,6 +473,13 @@ function install_vim_plugin()
 #    fi
 #}
 
+## 安装fzf
+function install fzf()
+{
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+}
+
 # 打印logo
 function print_logo()
 {
@@ -475,7 +495,7 @@ function print_logo()
     echo ''
     echo ''
     echo 'Just enjoy it!'
-    echo 'p.s. Follow me at https://github.com/chxuan.'
+    echo 'p.s. Follow me at https://github.com/applejwjcat.'
     echo ''
     printf "${normal}"
 }
@@ -487,8 +507,9 @@ function install_vimplus_on_mac()
     install_prepare_software_on_mac
     copy_files
     install_fonts_on_mac
-    install_ycm
+    install_fzf
     install_vim_plugin
+    copy_plugins_files
     print_logo
 }
 
@@ -499,8 +520,9 @@ function install_vimplus_on_android()
     install_prepare_software_on_android
     copy_files
     install_fonts_on_android
-    install_ycm_on_android
+    install_fzf
     install_vim_plugin
+    copy_plugins_files
     print_logo
 }
 
@@ -509,8 +531,9 @@ function begin_install_vimplus()
 {
     copy_files
     install_fonts_on_linux
-    install_ycm
+    install_fzf
     install_vim_plugin
+    copy_plugins_files
     print_logo
 }
 
