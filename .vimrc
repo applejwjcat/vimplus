@@ -1,7 +1,7 @@
 " File              : .vimrc
 " Author            : Tristan <15997232823@163.com>
 " Date              : Sun Jul 12 2020 11:53:20 AM CST
-" Last Modified Date: Fri Jul 17 2020 15:52:00 PM CST
+" Last Modified Date: Fri Jul 17 2020 23:24:46 PM CST
 " Last Modified By  : Tristan <15997232823@163.com>
 
 let mapleader = ","      " 定义<leader>键
@@ -315,7 +315,6 @@ let g:coc_global_extensions=[
             \ 'coc-gitignore',
             \ 'coc-sourcekit',
             \ 'coc-vimlsp',
-            \ 'coc-stylelint',
             \ 'coc-syntax',
             \ 'coc-tasks',
             \ 'coc-tslint-plugin',

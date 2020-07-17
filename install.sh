@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Fri Jul 17 2020 22:24:53 PM CST
+# Last Modified Date: Fri Jul 17 2020 23:29:22 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -277,7 +277,7 @@ function install_prepare_software_on_ubuntu()
         sudo apt-get install -y cmake
     fi
 
-    sudo apt-get install -y exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git nodejs npm
+    sudo apt-get install -y exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git nodejs npm clangd clang-format
 
     if [ $version -ge 18 ];then
         sudo apt-get install -y vim
@@ -290,7 +290,7 @@ function install_prepare_software_on_ubuntu()
 function install_prepare_software_on_ubuntu_like()
 {
     sudo apt-get update
-    sudo apt-get install -y cmake exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git nodejs npm
+    sudo apt-get install -y cmake exuberant-ctags build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git nodejs npm clangd clang-format
     compile_vim_on_ubuntu
 }
 
@@ -324,7 +324,7 @@ function install_prepare_software_on_fedora()
 # 安装archlinux必备软件
 function install_prepare_software_on_archlinux()
 {
-    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig node npm
+    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig node npm clangd clang-format go
     sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 }
 
@@ -484,7 +484,9 @@ function install_vim_plugin()
 ## 安装fzf
 function install_fzf()
 {
+    rm -rf ~/.fzf
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    go get -u github.com/junegunn/fzf
     ~/.fzf/install
 }
 
@@ -589,6 +591,7 @@ function install_vimplus_on_fedora()
 function install_vimplus_on_archlinux()
 {
     backup_vimrc_and_vim
+    install_fzf
     install_prepare_software_on_archlinux
     begin_install_vimplus
 }
