@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Fri Jul 17 2020 23:55:19 PM CST
+# Last Modified Date: Sat Jul 18 2020 09:17:54 AM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -445,6 +445,7 @@ function install_fonts_on_linux()
 function install_vim_plugin()
 {
     vim -c "PlugInstall" -c "q" -c "q"
+    vim
 }
 
 ## 安装ycm插件
@@ -591,8 +592,8 @@ function install_vimplus_on_fedora()
 function install_vimplus_on_archlinux()
 {
     backup_vimrc_and_vim
-    install_fzf
     install_prepare_software_on_archlinux
+    install_fzf
     begin_install_vimplus
 }
 
