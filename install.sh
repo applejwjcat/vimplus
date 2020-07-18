@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Sat Jul 18 2020 10:52:09 AM CST
+# Last Modified Date: Sat Jul 18 2020 17:31:19 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -232,8 +232,7 @@ function compile_vim_on_centos()
         --enable-multibyte \
         --with-tlib=tinfo \
         --enable-rubyinterp=yes \
-        --enable-pythoninterp=yes \
-        --with-python-config-dir=/lib64/python2.7/config \
+        --enable-python3interp \
         --enable-perlinterp=yes \
         --enable-luainterp=yes \
         --enable-gui=gtk2 \
@@ -311,7 +310,7 @@ function install_prepare_software_on_centos()
         sudo dnf install -y vim ctags automake gcc gcc-c++ kernel-devel make cmake python2 python2-devel python3-devel fontconfig ack git
     else
         sudo yum install -y ctags automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel fontconfig ack git
-        compile_vim_on_centos
+        #compile_vim_on_centos
     fi
 }
 
@@ -400,6 +399,43 @@ function copy_files()
     cp -r ${PWD}/autoload ~/.config/.vim
 }
 
+function copy_files_on_centos()
+{
+    rm -rf ~/.config/.vim/.vimrc
+
+    rm -rf ~/.config/.vim/.vimrc.custom.plugins
+    #cp ${PWD}/.vimrc.custom.plugins ~
+
+    rm -rf ~/.config/.vim/.vimrc.custom.config
+    #cp ${PWD}/.vimrc.custom.config ~
+
+    rm -rf ~/.config/.vim
+    mkdir -p ~/.config/.vim
+
+    zsh_location = $HOME"/.zshrc"
+    zsh_is_exist = $(is_exist_file $zsh_location)
+    if [ $zsh_is_exist == 1 ]; then
+        echo "export MYVIM=~/.config/.vim" >> ~/.zshrc 
+        source ~/.zshrc
+    fi
+    echo "export MYVIM=~/.config/.vim" >> ~/.bashrc 
+    source ~/.bashrc
+
+    cp ${PWD}/.vimrc.custom.plugins ~/.config/.vim/
+    cp ${PWD}/.vimrc.custom.config ~/.config/.vim/
+    cp ${PWD}/vimrc_centos ~/.config/.vim/.vimrc
+    cp ${PWD}/.ycm_extra_conf.py ~
+    ln -s ~/.config/.vim/.vimrc ~
+
+    rm -rf ~/.config/.vim/colors
+    cp -r ${PWD}/colors ~/.config/.vim
+
+    rm -rf ~/.config/.vim/ftplugin
+    cp -r ${PWD}/ftplugin ~/.config/.vim
+
+    rm -rf ~/.config/.vim/autoload
+    cp -r ${PWD}/autoload ~/.config/.vim
+}
 #自己设置的一些文件
 function copy_plugins_files()
 {
@@ -450,22 +486,22 @@ function install_vim_plugin()
 }
 
 ## 安装ycm插件
-#function install_ycm()
-#{
-#    git clone https://gitee.com/chxuan/YouCompleteMe-clang.git ~/.vim/plugged/YouCompleteMe
-#
-#    cd ~/.vim/plugged/YouCompleteMe
-#
-#    read -p "Please choose to compile ycm with python2 or python3, if there is a problem with the current selection, please choose another one. [2/3] " version
-#    if [[ $version == "2" ]]; then
-#        echo "Compile ycm with python2."
-#        python2.7 ./install.py --clang-completer
-#    else
-#        echo "Compile ycm with python3."
-#        python3 ./install.py --clang-completer
-#    fi
-#}
-#
+function install_ycm()
+{
+    git clone https://gitee.com/chxuan/YouCompleteMe-clang.git ~/.vim/plugged/YouCompleteMe
+
+    cd ~/.vim/plugged/YouCompleteMe
+
+    read -p "Please choose to compile ycm with python2 or python3, if there is a problem with the current selection, please choose another one. [2/3] " version
+    if [[ $version == "2" ]]; then
+        echo "Compile ycm with python2."
+        python2.7 ./install.py --clang-completer
+    else
+        echo "Compile ycm with python3."
+        python3 ./install.py --clang-completer
+    fi
+}
+
 ## 在android上安装ycm插件
 #function install_ycm_on_android()
 #{
@@ -577,7 +613,11 @@ function install_vimplus_on_debian()
 function install_vimplus_on_centos()
 {
     backup_vimrc_and_vim
-    install_prepare_software_on_centos
+    copy_files_on_centos
+    install_fonts_on_linux
+    install_ycm
+    install_vim_plugin
+    print_logo
     begin_install_vimplus
 }
 

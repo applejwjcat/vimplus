@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# File              : .ycm_extra_conf.py
+# Author            : Tristan <15997232823@163.com>
+# Date              : Sat Jul 18 2020 17:20:25 PM CST
+# Last Modified Date: Sat Jul 18 2020 17:20:48 PM CST
+# Last Modified By  : Tristan <15997232823@163.com>
+
 # This file is NOT licensed under the GPLv3, which is the license for the rest
 # of YouCompleteMe.
 #
