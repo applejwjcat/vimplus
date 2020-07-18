@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Sat Jul 18 2020 10:33:28 AM CST
+# Last Modified Date: Sat Jul 18 2020 10:52:09 AM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -484,13 +484,13 @@ function install_vim_plugin()
 #}
 
 ## 安装fzf
-#function install_fzf()
-#{
-#    rm -rf ~/.fzf
-#    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-#    go get -u github.com/junegunn/fzf
-#    ~/.fzf/install
-#}
+function install_fzf()
+{
+    rm -rf ~/.fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    go get -u github.com/junegunn/fzf
+    ~/.fzf/install
+}
 
 # 打印logo
 function print_logo()
@@ -594,7 +594,7 @@ function install_vimplus_on_archlinux()
 {
     backup_vimrc_and_vim
     install_prepare_software_on_archlinux
-    install_fzf
+    #install_fzf
     begin_install_vimplus
 }
 
