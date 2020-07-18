@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Sat Jul 18 2020 18:00:56 PM CST
+# Last Modified Date: Sat Jul 18 2020 18:08:10 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -613,12 +613,12 @@ function install_vimplus_on_debian()
 function install_vimplus_on_centos()
 {
     backup_vimrc_and_vim
+    install_prepare_software_on_centos
     copy_files_on_centos
     install_fonts_on_linux
     install_ycm
     install_vim_plugin
     print_logo
-    begin_install_vimplus
 }
 
 # 在fedora上安装vimplus
