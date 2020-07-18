@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Sat Jul 18 2020 17:31:19 PM CST
+# Last Modified Date: Sat Jul 18 2020 18:00:56 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -375,8 +375,8 @@ function copy_files()
     rm -rf ~/.config/.vim
     mkdir -p ~/.config/.vim
 
-    zsh_location = $HOME"/.zshrc"
-    zsh_is_exist = $(is_exist_file $zsh_location)
+    zsh_location=$HOME"/.zshrc"
+    zsh_is_exist=$(is_exist_file $zsh_location)
     if [ $zsh_is_exist == 1 ]; then
         echo "export MYVIM=~/.config/.vim" >> ~/.zshrc 
         source ~/.zshrc
@@ -412,8 +412,8 @@ function copy_files_on_centos()
     rm -rf ~/.config/.vim
     mkdir -p ~/.config/.vim
 
-    zsh_location = $HOME"/.zshrc"
-    zsh_is_exist = $(is_exist_file $zsh_location)
+    zsh_location=$HOME"/.zshrc"
+    zsh_is_exist=$(is_exist_file $zsh_location)
     if [ $zsh_is_exist == 1 ]; then
         echo "export MYVIM=~/.config/.vim" >> ~/.zshrc 
         source ~/.zshrc
