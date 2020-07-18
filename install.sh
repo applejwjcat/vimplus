@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Sat Jul 18 2020 09:17:54 AM CST
+# Last Modified Date: Sat Jul 18 2020 10:33:28 AM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -375,8 +375,9 @@ function copy_files()
 
     rm -rf ~/.config/.vim
     mkdir -p ~/.config/.vim
-    
-    zsh_is_exist = $(is_exist_file ~/.zshrc)
+
+    zsh_location = $HOME"/.zshrc"
+    zsh_is_exist = $(is_exist_file $zsh_location)
     if [ $zsh_is_exist == 1 ]; then
         echo "export MYVIM=~/.config/.vim" >> ~/.zshrc 
         source ~/.zshrc
@@ -483,13 +484,13 @@ function install_vim_plugin()
 #}
 
 ## 安装fzf
-function install_fzf()
-{
-    rm -rf ~/.fzf
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    go get -u github.com/junegunn/fzf
-    ~/.fzf/install
-}
+#function install_fzf()
+#{
+#    rm -rf ~/.fzf
+#    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+#    go get -u github.com/junegunn/fzf
+#    ~/.fzf/install
+#}
 
 # 打印logo
 function print_logo()
