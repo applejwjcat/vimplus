@@ -2,7 +2,7 @@
 # File              : install.sh
 # Author            : Tristan <15997232823@163.com>
 # Date              : Fri Jul 17 2020 15:51:07 PM CST
-# Last Modified Date: Sat Jul 18 2020 18:08:10 PM CST
+# Last Modified Date: Sat Jul 18 2020 18:16:11 PM CST
 # Last Modified By  : Tristan <15997232823@163.com>
 
 # 获取linux发行版名称
@@ -310,7 +310,7 @@ function install_prepare_software_on_centos()
         sudo dnf install -y vim ctags automake gcc gcc-c++ kernel-devel make cmake python2 python2-devel python3-devel fontconfig ack git
     else
         sudo yum install -y ctags automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel fontconfig ack git
-        #compile_vim_on_centos
+        compile_vim_on_centos
     fi
 }
 
