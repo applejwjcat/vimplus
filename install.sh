@@ -323,7 +323,7 @@ function install_prepare_software_on_fedora()
 # 安装archlinux必备软件
 function install_prepare_software_on_archlinux()
 {
-    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig npm clang go
+    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 ack git fontconfig npm clang go
     sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 }
 
